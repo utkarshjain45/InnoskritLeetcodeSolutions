@@ -11,11 +11,7 @@ public class prblm1744 {
 
     static boolean[] canEat(int[] candiesCount, int[][] queries) {
         //Answer for the leetcode to be copied from here
-        long[] candiesPrefixCount = new long[candiesCount.length];
-        candiesPrefixCount[0] = candiesCount[0];
-        for (int i = 1; i < candiesCount.length; i++) {
-            candiesPrefixCount[i] = candiesPrefixCount[i-1] + candiesCount[i];
-        }
+        long[] PrefixCount = calculatePrefixSum(candiesCount);
 
         boolean[] answer = new boolean[queries.length];
         for (int i = 0; i < queries.length; i++) {
@@ -24,12 +20,12 @@ public class prblm1744 {
             long favDay = query[1];
             long dailyCap = query[2];
 
-            long totalCandiesToBeEatenBefore = (favCandy == 0) ? 0 : candiesPrefixCount[favCandy-1];
+            long totalCandiesToBeEatenBefore = (favCandy == 0) ? 0 : PrefixCount[favCandy-1];
 
             if (totalCandiesToBeEatenBefore >= (favDay+1) * dailyCap) {
                 answer[i] = false;
             }
-            else if ((favDay+1) > candiesPrefixCount[favCandy]) {
+            else if ((favDay+1) > PrefixCount[favCandy]) {
                 answer[i] = false;
             }
             else{
@@ -37,5 +33,13 @@ public class prblm1744 {
             }
         }
         return answer;
+    }
+    static long[] calculatePrefixSum(int[] nums) {
+        long[] prefixSum = new long[nums.length];
+        prefixSum[0] = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            prefixSum[i] = prefixSum[i-1] + nums[i];
+        }
+        return prefixSum;
     }
 }
