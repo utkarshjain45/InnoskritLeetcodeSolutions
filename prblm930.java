@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class prblm930 {
     public static void main(String[] args) {
         int[] nums = {0,0,0,0,0};
