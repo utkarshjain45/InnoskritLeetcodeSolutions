@@ -37,27 +37,43 @@ public class prblm21 {
     public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         ListNode curr1 = list1; 
         ListNode curr2 = list2;  
+        ListNode list3 = null;  
+
+        if(curr1 == null){
+            return curr2;
+        }
+        if(curr2 == null){
+            return curr1;
+        }
+        
         while (curr1 != null && curr2 != null) {
             if(curr1.val == curr2.val){
-                addNode(curr1.val);
-                addNode(curr2.val);
+                list3 = addNode(list3,curr1.val);
+                list3 = addNode(list3,curr2.val);
                 curr1 = curr1.next;
                 curr2 = curr2.next;
             }
             else if (curr1.val < curr2.val) {
-                addNode(curr1.val);
+                list3 = addNode(list3,curr1.val);
                 curr1 = curr1.next;
             }
             else if (curr1.val > curr2.val) {
-                addNode(curr2.val);
+                list3 = addNode(list3,curr2.val);
                 curr2 = curr2.next;
             }
         }
+            while (curr1 != null) {
+                list3 = addNode(list3, curr1.val);
+                curr1 = curr1.next;
+            }
+            while (curr2 != null) {
+                list3 = addNode(list3, curr2.val);
+                curr2 = curr2.next;
+            }
         return list3;
     }
 
-    static ListNode list3 = null;
-    public static ListNode addNode(int val){
+    public static ListNode addNode(ListNode list3, int val){
         ListNode node = new ListNode(val);
         if(list3 == null){
             list3 = node;
