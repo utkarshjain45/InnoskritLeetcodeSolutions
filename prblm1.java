@@ -1,23 +1,38 @@
-public class prblm1 {
-    public int maxProduct(int n) {
-        int max1 = 0;
-        int max2 = 0;
-        while(n>0){
-            int digit = n % 10;
-            n = n / 10;
+import java.util.*;
 
-            if(digit > max1){
-                max2 = max1;
-                max1 = digit;
-            }
-            else if(digit > max2){
-                max2 = digit;
+public class prblm1 {
+    public static void main(String[] args) {
+        int[] nums = {2,7,11,15};
+        int target = 9;
+        System.out.println(Arrays.toString(new prblm1().twoSum(nums,target)));
+        
+        int[] nums2 = {3,2,4};
+        int target2 = 6;
+        System.out.println(Arrays.toString(new prblm1().twoSum(nums2,target2)));
+    }
+
+    public int[] twoSum(int[] nums, int target) {
+        for(int i = 0; i<nums.length; i++){
+            for(int j = i+1; j<nums.length; j++){
+                if(nums[i] + nums[j] == target){
+                    int a[] = {i,j};
+                    return a;
+                }
             }
         }
-        return max1 * max2;
+        return null;
     }
-    public static void main(String[] args) {
-        int n = 31;
-        System.out.println(new prblm1().maxProduct(n));
+
+    public int[] twoSum2(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int x = nums[i];
+            int y = target - x;
+            if(map.containsKey(y)){
+                return new int[] {map.get(y), i};
+            }
+            map.put(x, i);
+        }
+        return null;
     }
 }
