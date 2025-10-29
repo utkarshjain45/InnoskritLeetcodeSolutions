@@ -13,4 +13,12 @@ public class prblm3370 {
         }
         return 0;
     }
+    
+    public int smallestNumber2(int n) {
+        int i = 1;
+        while(i - 1 < n){
+            i <<= 1;
+        }
+        return i - 1;
+    }
 }
