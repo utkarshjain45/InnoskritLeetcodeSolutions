@@ -1,12 +1,3 @@
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x) {
-        val = x;
-        next = null;
-    }
-}
-
 public class prblm445 {
     public static ListNode reverseList(ListNode head) {
         ListNode prev = null;

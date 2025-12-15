@@ -1,12 +1,3 @@
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x) {
-        val = x;
-        next = null;
-    }
-}
-
 public class prblm21 {
     public static void main(String[] args) {
     //Self Made LinkedList to check the code
