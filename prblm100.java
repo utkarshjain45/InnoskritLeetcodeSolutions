@@ -1,15 +1,3 @@
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    
-    public TreeNode(int val) {
-        this.val = val;
-        this.left = null;
-        this.right = null;
-    }
-}
-
 public class prblm100 {
     public static void main(String[] args) {
         TreeNode root1 = new TreeNode(1);
